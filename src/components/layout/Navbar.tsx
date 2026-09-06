@@ -12,6 +12,8 @@ const navItems = [
 const Navbar = () => {
   return (
     <Box
+      component="nav"
+      aria-label="Main navigation"
       sx={{
         display: {
           xs: "none",
@@ -26,12 +28,17 @@ const Navbar = () => {
           key={item.href}
           href={item.href}
           sx={{
-            color: "text.primary",
+            color: item.href === "#contact" ? "#F8FAFC" : "#CBD5E1",
+            bgcolor: item.href === "#contact" ? "primary.main" : "transparent",
+            borderRadius: 2,
+            minHeight: 44,
+            ml: item.href === "#contact" ? 1 : 0,
+            "&:focus-visible": { outline: "2px solid #93C5FD", outlineOffset: 3 },
             minWidth: "auto",
             px: 1.5,
             "&:hover": {
-              bgcolor: "action.hover",
-              color: "primary.main",
+              bgcolor: item.href === "#contact" ? "primary.dark" : "rgba(148,163,184,0.1)",
+              color: "#FFFFFF",
             },
           }}
         >

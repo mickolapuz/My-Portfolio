@@ -20,10 +20,10 @@ const Header = () => {
         position="fixed"
         elevation={0}
         sx={{
-          bgcolor: "rgba(248, 250, 252, 0.92)",
-          color: "text.primary",
+          bgcolor: "rgba(15, 23, 42, 0.96)",
+          color: "#F8FAFC",
           borderBottom: "1px solid",
-          borderColor: "divider",
+          borderColor: "rgba(148,163,184,0.16)",
           backdropFilter: "blur(12px)",
         }}
       >
@@ -43,13 +43,13 @@ const Header = () => {
               href="#home"
               variant="h6"
               sx={{
-                color: "text.primary",
+                color: "#F8FAFC",
                 textDecoration: "none",
                 fontWeight: 700,
                 letterSpacing: "-0.03em",
               }}
             >
-              Micko.
+              Micko<Box component="span" sx={{ color: "#93C5FD" }}>.</Box>
             </Typography>
 
             <Navbar />
@@ -64,9 +64,17 @@ const Header = () => {
             >
               <IconButton
                 aria-label="Open navigation menu"
+                aria-expanded={mobileOpen}
+                aria-controls={mobileOpen ? "mobile-navigation" : undefined}
+                aria-haspopup="dialog"
                 onClick={() => setMobileOpen(true)}
                 sx={{
-                  color: "text.primary",
+                  color: "#F8FAFC",
+                  width: 44,
+                  height: 44,
+                  border: "1px solid #475569",
+                  borderRadius: 2,
+                  "&:hover": { bgcolor: "rgba(148,163,184,0.12)" },
                 }}
               >
                 <MenuRoundedIcon />

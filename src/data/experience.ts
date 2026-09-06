@@ -1,42 +1,40 @@
 export interface ExperienceItem {
   title: string;
-  type: string;
+  period: string;
+  current: boolean;
   description: string;
   highlights: string[];
+  technologies: string[];
 }
+
+export const experienceCompany = "Citco";
 
 const experienceItems: ExperienceItem[] = [
   {
-    title: "Software & RPA Development",
-    type: "Professional Experience",
+    title: "Mid Developer",
+    period: "2025–Present",
+    current: true,
     description:
-      "Developing business applications, automation workflows, API integrations, and supporting enterprise software processes.",
+      "Developing contract management solutions and business process automations.",
     highlights: [
-      ".NET application development",
-      "REST API integration",
-      "UiPath automation development",
-      "UiPath Apps development",
-      "UiPath Orchestrator",
-      "Business workflow automation",
-      "Application deployment and support",
-      "Logging and error handling",
+      "Work on an enterprise contract management system using .NET.",
+      "Create UiPath Apps and automation processes to support business workflows.",
+      "Build a loader application to support contract management operations.",
     ],
+    technologies: [".NET", "UiPath Apps", "UiPath Process"],
   },
   {
-    title: "Full-Stack Application Development",
-    type: "Project Experience",
+    title: "Junior Developer",
+    period: "2023–2025",
+    current: false,
     description:
-      "Designing and developing full-stack applications using React, TypeScript, Material UI, .NET, and relational databases.",
+      "Contributed to four projects, including two built from the ground up, across the full application stack.",
     highlights: [
-      "React and TypeScript frontend development",
-      "Material UI component development",
-      ".NET Web API development",
-      "Authentication and authorization",
-      "Entity Framework Core",
-      "SQL Server and PostgreSQL",
-      "Responsive application design",
-      "Git-based development workflows",
+      "Delivered tasks ranging from straightforward changes to complex functionality across frontend, backend, and database layers.",
+      "Developed full-stack features using React, .NET, and SQL.",
+      "Performed QA testing and manual application deployments in IIS.",
     ],
+    technologies: ["React", ".NET", "SQL", "IIS"],
   },
 ];
 

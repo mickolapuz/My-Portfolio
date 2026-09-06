@@ -18,8 +18,24 @@ const HeroSection = () => {
     <Box
       component="section"
       id="home"
+      aria-labelledby="hero-title"
       sx={{
-        minHeight: "100vh",
+        minHeight: { xs: "auto", md: "calc(100svh - 72px)" },
+        position: "relative",
+        bgcolor: "#0F172A",
+        color: "#F8FAFC",
+        backgroundImage: "radial-gradient(ellipse at 0% 0%, rgba(37,99,235,0.22), transparent 60%)",
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          width: 480,
+          height: 480,
+          border: "1px solid rgba(148,163,184,0.12)",
+          borderRadius: "50%",
+          right: -280,
+          bottom: -260,
+          pointerEvents: "none",
+        },
         display: "flex",
         alignItems: "center",
         overflow: "hidden",
@@ -33,18 +49,18 @@ const HeroSection = () => {
         },
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ position: "relative" }}>
         <Box
           sx={{
             display: "grid",
             gridTemplateColumns: {
-              xs: "1fr",
-              md: "1.2fr 0.8fr",
+              xs: "minmax(0, 1fr)",
+              md: "minmax(0, 1.15fr) minmax(0, 0.85fr)",
             },
             alignItems: "center",
             gap: {
               xs: 8,
-              md: 10,
+              md: 7,
             },
           }}
         >
@@ -52,9 +68,12 @@ const HeroSection = () => {
             <Typography
               variant="overline"
               sx={{
-                display: "block",
+                display: "flex",
+                alignItems: "center",
+                gap: 2,
+                "&::before": { content: '""', width: 32, height: 2, bgcolor: "#93C5FD" },
                 mb: 2,
-                color: "primary.main",
+                color: "#93C5FD",
                 fontWeight: 700,
                 fontSize: {
                   xs: "0.8rem",
@@ -68,13 +87,15 @@ const HeroSection = () => {
 
             <Typography
               component="h1"
+              id="hero-title"
               sx={{
                 maxWidth: 760,
-                color: "text.primary",
+                color: "#F8FAFC",
                 fontSize: {
                   xs: "2.75rem",
                   sm: "3.75rem",
-                  md: "4.5rem",
+                  md: "4rem",
+                  lg: "4.5rem",
                 },
                 fontWeight: 700,
                 lineHeight: {
@@ -89,7 +110,7 @@ const HeroSection = () => {
                 component="span"
                 sx={{
                   display: "block",
-                  color: "primary.main",
+                  color: "#93C5FD",
                 }}
               >
                 I build software solutions.
@@ -101,7 +122,7 @@ const HeroSection = () => {
               sx={{
                 mt: 3,
                 maxWidth: 650,
-                color: "text.secondary",
+                color: "#CBD5E1",
                 fontSize: {
                   xs: "1rem",
                   sm: "1.125rem",
@@ -136,7 +157,9 @@ const HeroSection = () => {
                 href="#projects"
                 endIcon={<ArrowForwardRoundedIcon />}
                 sx={{
-                  minHeight: 48,
+                  minHeight: 52,
+                  borderRadius: 2,
+                  "&:focus-visible": { outline: "2px solid #93C5FD", outlineOffset: 4 },
                   px: 3,
                 }}
               >
@@ -151,13 +174,15 @@ const HeroSection = () => {
                 size="large"
                 startIcon={<DownloadRoundedIcon />}
                 sx={{
-                  minHeight: 48,
+                  minHeight: 52,
+                  borderRadius: 2,
+                  "&:focus-visible": { outline: "2px solid #93C5FD", outlineOffset: 4 },
                   px: 3,
-                  color: "text.primary",
-                  borderColor: "divider",
+                  color: "#F8FAFC",
+                  borderColor: "#475569",
                   "&:hover": {
-                    borderColor: "primary.main",
-                    bgcolor: "action.hover",
+                    borderColor: "#93C5FD",
+                    bgcolor: "rgba(148,163,184,0.1)",
                   },
                 }}
               >
@@ -170,12 +195,14 @@ const HeroSection = () => {
                 href="#contact"
                 startIcon={<EmailOutlinedIcon />}
                 sx={{
-                  minHeight: 48,
+                  minHeight: 52,
+                  borderRadius: 2,
+                  "&:focus-visible": { outline: "2px solid #93C5FD", outlineOffset: 4 },
                   px: 2,
-                  color: "text.secondary",
+                  color: "#CBD5E1",
                   "&:hover": {
-                    color: "primary.main",
-                    bgcolor: "action.hover",
+                    color: "#93C5FD",
+                    bgcolor: "rgba(148,163,184,0.1)",
                   },
                 }}
               >
@@ -198,9 +225,9 @@ const HeroSection = () => {
                   label={technology}
                   variant="outlined"
                   sx={{
-                    bgcolor: "background.paper",
-                    borderColor: "divider",
-                    color: "text.secondary",
+                    bgcolor: "rgba(148,163,184,0.06)",
+                    borderColor: "#475569",
+                    color: "#CBD5E1",
                     fontWeight: 500,
                   }}
                 />
@@ -211,10 +238,10 @@ const HeroSection = () => {
           <Box
             sx={{
               position: "relative",
-              display: {
-                xs: "none",
-                md: "block",
-              },
+              minWidth: 0,
+              width: "100%",
+              maxWidth: { xs: 560, md: "none" },
+              justifySelf: "center",
             }}
           >
             <Box
@@ -226,7 +253,7 @@ const HeroSection = () => {
                 height: 300,
                 borderRadius: "50%",
                 bgcolor: "primary.main",
-                opacity: 0.08,
+                opacity: 0.18,
                 filter: "blur(50px)",
                 transform: "translate(-50%, -50%)",
               }}
@@ -235,12 +262,14 @@ const HeroSection = () => {
             <Box
               sx={{
                 position: "relative",
-                p: 3,
+                p: { xs: 2.5, sm: 4 },
+                color: "#0F172A",
                 bgcolor: "background.paper",
                 border: "1px solid",
-                borderColor: "divider",
-                borderRadius: 4,
-                boxShadow: "0 24px 60px rgba(15, 23, 42, 0.08)",
+                borderColor: "#E2E8F0",
+                borderTop: "4px solid #60A5FA",
+                borderRadius: { xs: 3, md: 4 },
+                boxShadow: "0 24px 64px rgba(0,0,0,0.2)",
               }}
             >
               <Box
@@ -258,7 +287,7 @@ const HeroSection = () => {
                       width: 10,
                       height: 10,
                       borderRadius: "50%",
-                      bgcolor: "divider",
+                      bgcolor: ["#CBD5E1", "#93C5FD", "#60A5FA"][item],
                     }}
                   />
                 ))}
@@ -278,7 +307,8 @@ const HeroSection = () => {
               <Box
                 sx={{
                   fontFamily: "monospace",
-                  fontSize: "0.9rem",
+                  fontSize: { xs: "0.75rem", sm: "0.85rem", lg: "0.9rem" },
+                  overflowWrap: "anywhere",
                   lineHeight: 2,
                 }}
               >

@@ -1,75 +1,87 @@
-# React + TypeScript + Vite
+# My Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio website for **Micko Lapuz**, a software developer. This repository contains the React application that presents his background, technical skills, selected projects, professional experience, and contact information.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Single-page layout with Hero, About, Skills, Projects, Experience, and Contact sections.
+- Responsive layouts with dedicated mobile navigation.
+- Project cards that open detailed project dialogs.
+- Resume link backed by a PDF in `public/resume/`.
+- Configurable email, GitHub, and LinkedIn links.
+- Contact form that opens the visitor's email application with a prefilled message through `mailto:`; it does not send email through a backend.
+- Shared Material UI theme with Inter typography and smooth section scrolling.
 
-## React Compiler
+## Tech stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 19** and **TypeScript** for the application.
+- **Vite** for development and production builds.
+- **Material UI**, **Material Icons**, and **Emotion** for components and styling.
+- **ESLint** for code linting.
 
-## Expanding the ESLint configuration
+## Getting started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Install Node.js and npm compatible with the Vite version in `package.json`, then clone the repository and install its locked dependencies:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```sh
+git clone https://github.com/mickolapuz/My-Portfolio.git
+cd My-Portfolio
+npm ci
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Copy `.env.example` to `.env` in the project root and set the contact details:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```dotenv
+VITE_CONTACT_EMAIL=you@example.com
+VITE_GITHUB_URL=https://github.com/your-username
+VITE_LINKEDIN_URL=https://www.linkedin.com/in/your-username
 ```
+
+These values are read by `src/data/profile.ts`. If omitted, they default to empty strings. The contact form requires `VITE_CONTACT_EMAIL` to open an email draft. Values prefixed with `VITE_` are included in the browser application, so use only public contact information.
+
+Start the development server:
+
+```sh
+npm run dev
+```
+
+Open the local URL printed in the terminal. Restart the development server after changing environment variables.
+
+## Available commands
+
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the Vite development server. |
+| `npm run build` | Run the TypeScript build checks and generate a production build. |
+| `npm run preview` | Preview the production build locally after building. |
+| `npm run lint` | Run ESLint on the repository. |
+
+## Repository structure
+
+```text
+public/
+  resume/             Resume PDF
+src/
+  components/
+    layout/           Header, navigation, mobile drawer, and footer
+    projects/         Project cards and detail dialog
+  data/               Profile, projects, skills, and experience content
+  sections/           Main portfolio sections
+  theme/              Shared Material UI theme
+  types/              Project type definitions
+  App.tsx             Page composition
+  main.tsx            Application entry point
+.env.example          Example public contact configuration
+```
+
+## Updating the portfolio
+
+- Edit `src/data/profile.ts` for the name, role, and resume path.
+- Edit `src/data/projects.ts`, `src/data/skills.ts`, and `src/data/experience.ts` for the corresponding portfolio content.
+- Update section copy and layouts in `src/sections/`.
+- Adjust colors, typography, and component defaults in `src/theme/theme.ts`.
+- Replace `public/resume/Micko-Lapuz-Resume.pdf` to update the resume, or change `resumeUrl` in the profile data if the filename changes.
+
+## Production build
+
+Run `npm run build` to generate the static site in `dist/`. Configure the public contact environment variables before building, then publish `dist/` with a static hosting service.

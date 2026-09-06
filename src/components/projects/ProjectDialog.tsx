@@ -1,0 +1,271 @@
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LaunchRoundedIcon from "@mui/icons-material/LaunchRounded";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import {
+  Box,
+  Button,
+  Chip,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+  Typography,
+} from "@mui/material";
+import type { Project } from "../../types/project";
+
+interface ProjectDialogProps {
+  project: Project | null;
+  open: boolean;
+  onClose: () => void;
+}
+
+const ProjectDialog = ({ project, open, onClose }: ProjectDialogProps) => {
+  if (!project) {
+    return null;
+  }
+
+  return (
+    <Dialog
+      open={open}
+      onClose={onClose}
+      fullWidth
+      maxWidth="md"
+      scroll="paper"
+      slotProps={{
+        paper: {
+          sx: {
+            borderRadius: {
+              xs: 0,
+              sm: 3,
+            },
+            m: {
+              xs: 0,
+              sm: 4,
+            },
+            maxHeight: {
+              xs: "100%",
+              sm: "calc(100% - 64px)",
+            },
+          },
+        },
+      }}
+    >
+      <DialogTitle
+        sx={{
+          p: {
+            xs: 2.5,
+            sm: 3,
+          },
+          borderBottom: "1px solid",
+          borderColor: "divider",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "flex-start",
+            justifyContent: "space-between",
+            gap: 2,
+          }}
+        >
+          <Box>
+            <Typography
+              component="h2"
+              variant="h5"
+              sx={{
+                color: "text.primary",
+                fontWeight: 700,
+              }}
+            >
+              {project.title}
+            </Typography>
+
+            {project.isPrivate && (
+              <Chip
+                icon={<LockOutlinedIcon />}
+                label="Private Project"
+                size="small"
+                variant="outlined"
+                sx={{
+                  mt: 1.5,
+                  color: "text.secondary",
+                  borderColor: "divider",
+                }}
+              />
+            )}
+          </Box>
+
+          <IconButton
+            aria-label="Close project details"
+            onClick={onClose}
+            sx={{
+              flexShrink: 0,
+              color: "text.secondary",
+            }}
+          >
+            <CloseRoundedIcon />
+          </IconButton>
+        </Box>
+      </DialogTitle>
+
+      <DialogContent
+        sx={{
+          p: {
+            xs: 2.5,
+            sm: 3,
+          },
+        }}
+      >
+        <Typography
+          variant="overline"
+          sx={{
+            display: "block",
+            mb: 1,
+            color: "primary.main",
+            fontWeight: 700,
+            letterSpacing: "0.12em",
+          }}
+        >
+          OVERVIEW
+        </Typography>
+
+        <Typography
+          variant="body1"
+          sx={{
+            color: "text.secondary",
+            lineHeight: 1.8,
+          }}
+        >
+          {project.description}
+        </Typography>
+
+        <Typography
+          variant="overline"
+          sx={{
+            display: "block",
+            mt: 4,
+            mb: 1.5,
+            color: "primary.main",
+            fontWeight: 700,
+            letterSpacing: "0.12em",
+          }}
+        >
+          TECHNOLOGIES
+        </Typography>
+
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: 1,
+          }}
+        >
+          {project.technologies.map((technology) => (
+            <Chip
+              key={technology}
+              label={technology}
+              variant="outlined"
+              sx={{
+                bgcolor: "background.paper",
+                borderColor: "divider",
+                color: "text.secondary",
+                fontWeight: 500,
+              }}
+            />
+          ))}
+        </Box>
+
+        <Typography
+          variant="overline"
+          sx={{
+            display: "block",
+            mt: 4,
+            mb: 1.5,
+            color: "primary.main",
+            fontWeight: 700,
+            letterSpacing: "0.12em",
+          }}
+        >
+          KEY HIGHLIGHTS
+        </Typography>
+
+        <Box
+          component="ul"
+          sx={{
+            m: 0,
+            pl: 2.5,
+            color: "text.secondary",
+          }}
+        >
+          {project.highlights.map((highlight) => (
+            <Typography
+              key={highlight}
+              component="li"
+              variant="body1"
+              sx={{
+                mb: 1,
+                pl: 0.5,
+                color: "text.secondary",
+                lineHeight: 1.7,
+              }}
+            >
+              {highlight}
+            </Typography>
+          ))}
+        </Box>
+
+        {(project.githubUrl || project.liveUrl) && (
+          <Box
+            sx={{
+              mt: 4,
+              pt: 3,
+              display: "flex",
+              alignItems: "center",
+              flexWrap: "wrap",
+              gap: 1.5,
+              borderTop: "1px solid",
+              borderColor: "divider",
+            }}
+          >
+            {project.githubUrl && (
+              <Button
+                component="a"
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="outlined"
+                startIcon={<GitHubIcon />}
+                sx={{
+                  color: "text.primary",
+                  borderColor: "divider",
+                  "&:hover": {
+                    borderColor: "primary.main",
+                  },
+                }}
+              >
+                GitHub
+              </Button>
+            )}
+
+            {project.liveUrl && (
+              <Button
+                component="a"
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="contained"
+                endIcon={<LaunchRoundedIcon />}
+              >
+                Live Demo
+              </Button>
+            )}
+          </Box>
+        )}
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+export default ProjectDialog;

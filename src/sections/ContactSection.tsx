@@ -1,6 +1,8 @@
 import { useState, type SyntheticEvent } from "react";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import WorkOutlineRoundedIcon from "@mui/icons-material/WorkOutlineRounded";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { Alert, Box, Button, Container, Snackbar, TextField, Typography } from "@mui/material";
@@ -35,6 +37,8 @@ const ContactSection = () => {
   const socialLinks = [
     { label: "GitHub", href: profile.githubUrl, icon: GitHubIcon },
     { label: "LinkedIn", href: profile.linkedinUrl, icon: LinkedInIcon },
+    { label: "Facebook", href: profile.facebookUrl, icon: FacebookIcon },
+    { label: "Upwork", href: profile.upworkUrl, icon: WorkOutlineRoundedIcon },
   ].filter((link) => link.href);
 
   return (
@@ -126,7 +130,7 @@ const ContactSection = () => {
             )}
 
             {socialLinks.length > 0 && (
-              <Box component="nav" aria-label="Social profiles" sx={{ display: "flex", flexWrap: "wrap", gap: 3, mt: 3 }}>
+              <Box component="nav" aria-label="Social profiles" sx={{ display: "flex", flexWrap: "wrap", columnGap: 3, rowGap: 1, mt: 3 }}>
                 {socialLinks.map(({ label, href, icon: Icon }) => (
                   <Button
                     key={label}

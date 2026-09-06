@@ -8,7 +8,7 @@ Personal portfolio website for **Micko Lapuz**, a software developer. This repos
 - Responsive layouts with dedicated mobile navigation.
 - Project cards that open detailed project dialogs.
 - Resume link backed by a PDF in `public/resume/`.
-- Configurable email, GitHub, and LinkedIn links.
+- Email, GitHub, Facebook, LinkedIn, and Upwork links.
 - Contact form that opens the visitor's email application with a prefilled message through `mailto:`; it does not send email through a backend.
 - Shared Material UI theme with Inter typography and smooth section scrolling.
 
@@ -29,15 +29,7 @@ cd My-Portfolio
 npm ci
 ```
 
-Copy `.env.example` to `.env` in the project root and set the contact details:
-
-```dotenv
-VITE_CONTACT_EMAIL=you@example.com
-VITE_GITHUB_URL=https://github.com/your-username
-VITE_LINKEDIN_URL=https://www.linkedin.com/in/your-username
-```
-
-These values are read by `src/data/profile.ts`. If omitted, they default to empty strings. The contact form requires `VITE_CONTACT_EMAIL` to open an email draft. Values prefixed with `VITE_` are included in the browser application, so use only public contact information.
+Contact details are configured in `src/data/profile.ts`, including email, GitHub, Facebook, LinkedIn, and Upwork. No environment variables are needed for the contact links or email form.
 
 Start the development server:
 
@@ -45,7 +37,7 @@ Start the development server:
 npm run dev
 ```
 
-Open the local URL printed in the terminal. Restart the development server after changing environment variables.
+Open the local URL printed in the terminal.
 
 ## Available commands
 
@@ -71,12 +63,11 @@ src/
   types/              Project type definitions
   App.tsx             Page composition
   main.tsx            Application entry point
-.env.example          Example public contact configuration
 ```
 
 ## Updating the portfolio
 
-- Edit `src/data/profile.ts` for the name, role, and resume path.
+- Edit `src/data/profile.ts` for the name, role, contact links, and resume path.
 - Edit `src/data/projects.ts`, `src/data/skills.ts`, and `src/data/experience.ts` for the corresponding portfolio content.
 - Update section copy and layouts in `src/sections/`.
 - Adjust colors, typography, and component defaults in `src/theme/theme.ts`.
@@ -84,4 +75,4 @@ src/
 
 ## Production build
 
-Run `npm run build` to generate the static site in `dist/`. Configure the public contact environment variables before building, then publish `dist/` with a static hosting service.
+Run `npm run build` to generate the static site in `dist/`. Publish `dist/` with a static hosting service.

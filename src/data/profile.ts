@@ -3,9 +3,11 @@ const profile = {
   firstName: "Micko",
   role: "Software Developer",
 
-  email: import.meta.env.VITE_CONTACT_EMAIL ?? "",
-  githubUrl: import.meta.env.VITE_GITHUB_URL ?? "",
-  linkedinUrl: import.meta.env.VITE_LINKEDIN_URL ?? "",
+  email: "mickolapuz19@gmail.com",
+  githubUrl: "https://github.com/mickolapuz",
+  facebookUrl: "https://www.facebook.com/mickolapuz/",
+  linkedinUrl: "https://www.linkedin.com/in/micko-lapuz-760620282/",
+  upworkUrl: "https://www.upwork.com/freelancers/~0154d70c87d40e04ef",
 
   resumeUrl: "/resume/Micko-Lapuz-Resume.pdf",
 };

@@ -15,11 +15,11 @@ const experienceItems: ExperienceItem[] = [
     period: "2025–Present",
     current: true,
     description:
-      "Developing contract management solutions and business process automations.",
+      "Building contract management solutions and business workflow automation.",
     highlights: [
-      "Work on an enterprise contract management system using .NET.",
-      "Create UiPath Apps and automation processes to support business workflows.",
-      "Build a loader application to support contract management operations.",
+      ".NET development and API integrations.",
+      "UiPath apps, automation processes, and data-loading workflows.",
+      "Application support, logging, and error handling.",
     ],
     technologies: [".NET", "UiPath Apps", "UiPath Process"],
   },
@@ -28,11 +28,11 @@ const experienceItems: ExperienceItem[] = [
     period: "2023–2025",
     current: false,
     description:
-      "Contributed to four projects, including two built from the ground up, across the full application stack.",
+      "Contributed to four full-stack projects, including two built from the ground up.",
     highlights: [
-      "Delivered tasks ranging from straightforward changes to complex functionality across frontend, backend, and database layers.",
-      "Developed full-stack features using React, .NET, and SQL.",
-      "Performed QA testing and manual application deployments in IIS.",
+      "Responsive frontends, backend APIs, and SQL database development.",
+      "Delivered simple to complex features across the application stack.",
+      "QA testing and manual IIS deployments.",
     ],
     technologies: ["React", ".NET", "SQL", "IIS"],
   },

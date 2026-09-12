@@ -55,9 +55,7 @@ const skillCategories: SkillCategory[] = [
       "UiPath Orchestrator",
       "Git",
       "GitHub",
-      "Docker",
       "Postman",
-      "Kubernetes",
     ],
   },
 ];

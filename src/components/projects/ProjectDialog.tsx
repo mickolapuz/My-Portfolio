@@ -2,6 +2,8 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LaunchRoundedIcon from "@mui/icons-material/LaunchRounded";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import PublicRoundedIcon from "@mui/icons-material/PublicRounded";
+import WorkOutlineRoundedIcon from "@mui/icons-material/WorkOutlineRounded";
 import {
   Box,
   Button,
@@ -12,7 +14,7 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
-import type { Project } from "../../types/project";
+import type { Project, ProjectType } from "../../types/project";
 
 interface ProjectDialogProps {
   project: Project | null;
@@ -20,10 +22,33 @@ interface ProjectDialogProps {
   onClose: () => void;
 }
 
+const getProjectTypeMeta = (projectType: ProjectType) => {
+  switch (projectType) {
+    case "work":
+      return {
+        label: "Work Project",
+        icon: WorkOutlineRoundedIcon,
+      };
+    case "private":
+      return {
+        label: "Private Project",
+        icon: LockOutlinedIcon,
+      };
+    case "public":
+      return {
+        label: "Public Project",
+        icon: PublicRoundedIcon,
+      };
+  }
+};
+
 const ProjectDialog = ({ project, open, onClose }: ProjectDialogProps) => {
   if (!project) {
     return null;
   }
+
+  const projectTypeMeta = getProjectTypeMeta(project.projectType);
+  const ProjectTypeIcon = projectTypeMeta.icon;
 
   return (
     <Dialog
@@ -81,19 +106,17 @@ const ProjectDialog = ({ project, open, onClose }: ProjectDialogProps) => {
               {project.title}
             </Typography>
 
-            {project.isPrivate && (
-              <Chip
-                icon={<LockOutlinedIcon />}
-                label="Private Project"
-                size="small"
-                variant="outlined"
-                sx={{
-                  mt: 1.5,
-                  color: "text.secondary",
-                  borderColor: "divider",
-                }}
-              />
-            )}
+            <Chip
+              icon={<ProjectTypeIcon />}
+              label={projectTypeMeta.label}
+              size="small"
+              variant="outlined"
+              sx={{
+                mt: 1.25,
+                color: "text.secondary",
+                borderColor: "divider",
+              }}
+            />
           </Box>
 
           <IconButton
@@ -111,7 +134,15 @@ const ProjectDialog = ({ project, open, onClose }: ProjectDialogProps) => {
 
       <DialogContent
         sx={{
-          p: {
+          px: {
+            xs: 2.5,
+            sm: 3,
+          },
+          pt: {
+            xs: 3,
+            sm: 3.5,
+          },
+          pb: {
             xs: 2.5,
             sm: 3,
           },
@@ -121,7 +152,7 @@ const ProjectDialog = ({ project, open, onClose }: ProjectDialogProps) => {
           variant="overline"
           sx={{
             display: "block",
-            mb: 1,
+            mb: 1.25,
             color: "primary.main",
             fontWeight: 700,
             letterSpacing: "0.12em",
@@ -144,8 +175,8 @@ const ProjectDialog = ({ project, open, onClose }: ProjectDialogProps) => {
           variant="overline"
           sx={{
             display: "block",
-            mt: 4,
-            mb: 1.5,
+            mt: 3.25,
+            mb: 1.25,
             color: "primary.main",
             fontWeight: 700,
             letterSpacing: "0.12em",
@@ -181,8 +212,8 @@ const ProjectDialog = ({ project, open, onClose }: ProjectDialogProps) => {
           variant="overline"
           sx={{
             display: "block",
-            mt: 4,
-            mb: 1.5,
+            mt: 3.25,
+            mb: 1.25,
             color: "primary.main",
             fontWeight: 700,
             letterSpacing: "0.12em",
@@ -219,7 +250,7 @@ const ProjectDialog = ({ project, open, onClose }: ProjectDialogProps) => {
         {(project.githubUrl || project.liveUrl) && (
           <Box
             sx={{
-              mt: 4,
+              mt: 3.5,
               pt: 3,
               display: "flex",
               alignItems: "center",

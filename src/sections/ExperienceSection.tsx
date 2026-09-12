@@ -2,6 +2,8 @@ import { Box, Container, Typography } from "@mui/material";
 import experienceItems, { experienceCompany } from "../data/experience";
 
 const ExperienceSection = () => {
+  const experience = experienceItems[0];
+
   return (
     <Box
       component="section"
@@ -10,7 +12,7 @@ const ExperienceSection = () => {
       sx={{ py: { xs: 10, md: 14 }, bgcolor: "background.paper" }}
     >
       <Container maxWidth="lg">
-        <Box sx={{ mb: { xs: 5, md: 7 }, maxWidth: 720 }}>
+        <Box sx={{ mb: { xs: 5, md: 7 }, maxWidth: 760 }}>
           <Typography
             variant="overline"
             sx={{
@@ -23,17 +25,19 @@ const ExperienceSection = () => {
           >
             EXPERIENCE
           </Typography>
+
           <Typography
             component="h2"
             id="experience-title"
             variant="h2"
             sx={{ mb: 2, letterSpacing: "-0.03em" }}
           >
-            From full-stack development to automation.
+            Full-stack development and enterprise automation.
           </Typography>
+
           <Typography sx={{ color: "text.secondary", lineHeight: 1.8 }}>
-            Building business applications and expanding into enterprise
-            workflows and process automation.
+            Building business applications, APIs, integrations, and automation
+            solutions across modern web development and enterprise workflows.
           </Typography>
         </Box>
 
@@ -55,118 +59,63 @@ const ExperienceSection = () => {
             >
               {experienceCompany}
             </Typography>
-            <Typography sx={{ color: "text.secondary", mb: 2 }}>
-              2023–Present
-            </Typography>
+
             <Typography
               variant="body2"
-              sx={{ color: "text.secondary", maxWidth: 280, lineHeight: 1.8 }}
+              sx={{
+                color: "text.secondary",
+                maxWidth: 300,
+                lineHeight: 1.8,
+              }}
             >
-              Two roles. A growing focus on application development and
-              business automation.
+              Professional experience across application development, API
+              integration, data processing, and business automation.
             </Typography>
           </Box>
 
-          <Box
-            component="ol"
-            aria-label="Roles at Citco, most recent first"
-            sx={{ m: 0, p: 0, listStyle: "none" }}
-          >
-            {experienceItems.map((experience, index) => (
-              <Box
-                component="li"
-                key={experience.title}
-                sx={{
-                  position: "relative",
-                  pl: { xs: 3, sm: 4 },
-                  pb: index < experienceItems.length - 1 ? 5 : 0,
-                  "&::before": {
-                    content: '""',
-                    position: "absolute",
-                    left: 5,
-                    top: 9,
-                    bottom: index < experienceItems.length - 1 ? -9 : 0,
-                    width: "1px",
-                    bgcolor: "divider",
-                  },
-                  "&::after": {
-                    content: '""',
-                    position: "absolute",
-                    top: 5,
-                    left: 0,
-                    width: 11,
-                    height: 11,
-                    borderRadius: "50%",
-                    bgcolor: experience.current ? "primary.main" : "background.paper",
-                    border: "2px solid",
-                    borderColor: "primary.main",
-                    boxSizing: "border-box",
-                  },
-                }}
-              >
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    alignItems: "center",
-                    gap: 1.5,
-                    mb: 1,
-                  }}
-                >
-                  <Typography
-                    variant="body2"
-                    sx={{ color: "text.secondary", fontVariantNumeric: "tabular-nums" }}
-                  >
-                    {experience.period}
-                  </Typography>
-                  {experience.current && (
-                    <Typography
-                      variant="caption"
-                      sx={{
-                        color: "primary.main",
-                        fontWeight: 700,
-                        letterSpacing: "0.08em",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      Current role
-                    </Typography>
-                  )}
-                </Box>
-                <Typography
-                  component="h4"
-                  variant="h5"
-                  sx={{ fontWeight: 700, mb: 1.5 }}
-                >
-                  {experience.title}
+          <Box>
+            <Typography
+              component="h4"
+              variant="h5"
+              sx={{ fontWeight: 700, mb: 1.5 }}
+            >
+              {experience.title}
+            </Typography>
+
+            <Typography
+              sx={{ color: "text.secondary", lineHeight: 1.8, mb: 2.5 }}
+            >
+              {experience.description}
+            </Typography>
+
+            <Box
+              component="ul"
+              sx={{
+                m: 0,
+                pl: 2,
+                color: "text.secondary",
+                "& li": { pl: 0.5, mb: 1, lineHeight: 1.8 },
+                "& li::marker": { color: "primary.main" },
+              }}
+            >
+              {experience.highlights.map((highlight) => (
+                <Typography component="li" variant="body2" key={highlight}>
+                  {highlight}
                 </Typography>
-                <Typography sx={{ color: "text.secondary", lineHeight: 1.8, mb: 2 }}>
-                  {experience.description}
-                </Typography>
-                <Box
-                  component="ul"
-                  sx={{
-                    m: 0,
-                    pl: 2,
-                    color: "text.secondary",
-                    "& li": { pl: 0.5, mb: 1, lineHeight: 1.8 },
-                    "& li::marker": { color: "primary.main" },
-                  }}
-                >
-                  {experience.highlights.map((highlight) => (
-                    <Typography component="li" variant="body2" key={highlight}>
-                      {highlight}
-                    </Typography>
-                  ))}
-                </Box>
-                <Typography
-                  variant="body2"
-                  sx={{ mt: 2.5, fontWeight: 600, color: "text.primary", lineHeight: 1.8 }}
-                >
-                  {experience.technologies.join(" · ")}
-                </Typography>
-              </Box>
-            ))}
+              ))}
+            </Box>
+
+            <Typography
+              variant="body2"
+              sx={{
+                mt: 2.5,
+                fontWeight: 600,
+                color: "text.primary",
+                lineHeight: 1.8,
+              }}
+            >
+              {experience.technologies.join(" · ")}
+            </Typography>
           </Box>
         </Box>
       </Container>

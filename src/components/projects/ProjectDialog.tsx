@@ -8,13 +8,14 @@ import {
   Box,
   Button,
   Chip,
-  Container,
   Dialog,
   DialogContent,
   DialogTitle,
   IconButton,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import type { Project, ProjectType } from "../../types/project";
 
 interface ProjectDialogProps {
@@ -44,6 +45,9 @@ const getProjectTypeMeta = (projectType: ProjectType) => {
 };
 
 const ProjectDialog = ({ project, open, onClose }: ProjectDialogProps) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   if (!project) {
     return null;
   }
@@ -55,20 +59,39 @@ const ProjectDialog = ({ project, open, onClose }: ProjectDialogProps) => {
     <Dialog
       open={open}
       onClose={onClose}
-      fullScreen
+      fullWidth
+      fullScreen={isMobile}
+      maxWidth="md"
       scroll="paper"
       slotProps={{
         paper: {
           sx: {
-            bgcolor: "background.paper",
+            borderRadius: {
+              xs: 0,
+              sm: 3,
+            },
+            m: {
+              xs: 0,
+              sm: 4,
+            },
+            maxHeight: {
+              xs: "100%",
+              sm: "calc(100% - 64px)",
+            },
           },
         },
       }}
     >
       <DialogTitle
         sx={{
-          p: 0,
-          position: "sticky",
+          p: {
+            xs: 2.25,
+            sm: 3,
+          },
+          position: {
+            xs: "sticky",
+            sm: "static",
+          },
           top: 0,
           zIndex: 2,
           bgcolor: "background.paper",
@@ -76,13 +99,8 @@ const ProjectDialog = ({ project, open, onClose }: ProjectDialogProps) => {
           borderColor: "divider",
         }}
       >
-        <Container
-          maxWidth="lg"
+        <Box
           sx={{
-            py: {
-              xs: 2,
-              sm: 2.5,
-            },
             display: "flex",
             alignItems: "flex-start",
             justifyContent: "space-between",
@@ -92,16 +110,18 @@ const ProjectDialog = ({ project, open, onClose }: ProjectDialogProps) => {
           <Box sx={{ minWidth: 0 }}>
             <Typography
               component="h2"
+              variant="h5"
               sx={{
                 color: "text.primary",
                 fontWeight: 700,
                 fontSize: {
                   xs: "1.35rem",
-                  sm: "1.6rem",
-                  md: "1.75rem",
+                  sm: undefined,
                 },
-                lineHeight: 1.25,
-                letterSpacing: "-0.025em",
+                lineHeight: {
+                  xs: 1.25,
+                  sm: undefined,
+                },
               }}
             >
               {project.title}
@@ -113,7 +133,10 @@ const ProjectDialog = ({ project, open, onClose }: ProjectDialogProps) => {
               size="small"
               variant="outlined"
               sx={{
-                mt: 1,
+                mt: {
+                  xs: 1,
+                  sm: 1.25,
+                },
                 color: "text.secondary",
                 borderColor: "divider",
               }}
@@ -124,241 +147,231 @@ const ProjectDialog = ({ project, open, onClose }: ProjectDialogProps) => {
             aria-label="Close project details"
             onClick={onClose}
             sx={{
-              mt: -0.5,
               flexShrink: 0,
               color: "text.secondary",
             }}
           >
             <CloseRoundedIcon />
           </IconButton>
-        </Container>
+        </Box>
       </DialogTitle>
 
       <DialogContent
         sx={{
-          p: 0,
+          px: {
+            xs: 2.25,
+            sm: 3,
+          },
+          pt: {
+            xs: 2.75,
+            sm: 3.5,
+          },
+          pb: {
+            xs: 2.25,
+            sm: 3,
+          },
           "&:first-of-type": {
-            pt: 0,
+            pt: {
+              xs: 2.75,
+              sm: 4,
+            },
           },
         }}
       >
-        <Container
-          maxWidth="lg"
+        <Typography
+          variant="overline"
           sx={{
-            py: {
-              xs: 3,
-              sm: 4,
-              md: 5,
+            display: "block",
+            mb: {
+              xs: 0.75,
+              sm: 1.25,
+            },
+            color: "primary.main",
+            fontWeight: 700,
+            letterSpacing: "0.12em",
+          }}
+        >
+          OVERVIEW
+        </Typography>
+
+        <Typography
+          variant="body1"
+          sx={{
+            color: "text.secondary",
+            fontSize: {
+              xs: "0.95rem",
+              sm: "1rem",
+            },
+            lineHeight: {
+              xs: 1.65,
+              sm: 1.8,
             },
           }}
         >
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: {
-                xs: "minmax(0, 1fr)",
-                md: "minmax(0, 0.9fr) minmax(0, 1.1fr)",
-              },
-              gap: {
-                xs: 3.5,
-                md: 7,
-              },
-              alignItems: "start",
-            }}
-          >
-            <Box sx={{ minWidth: 0 }}>
-              <Typography
-                variant="overline"
-                sx={{
-                  display: "block",
-                  mb: 0.75,
-                  color: "primary.main",
-                  fontWeight: 700,
-                  fontSize: {
-                    xs: "0.75rem",
-                    sm: "0.8rem",
-                  },
-                  letterSpacing: "0.12em",
-                }}
-              >
-                OVERVIEW
-              </Typography>
+          {project.description}
+        </Typography>
 
-              <Typography
-                variant="body1"
-                sx={{
-                  color: "text.secondary",
-                  fontSize: {
-                    xs: "0.95rem",
-                    sm: "1rem",
-                  },
-                  lineHeight: {
-                    xs: 1.65,
-                    sm: 1.75,
-                  },
-                }}
-              >
-                {project.description}
-              </Typography>
+        <Typography
+          variant="overline"
+          sx={{
+            display: "block",
+            mt: {
+              xs: 2.5,
+              sm: 3.25,
+            },
+            mb: {
+              xs: 0.75,
+              sm: 1.25,
+            },
+            color: "primary.main",
+            fontWeight: 700,
+            letterSpacing: "0.12em",
+          }}
+        >
+          TECHNOLOGIES
+        </Typography>
 
-              <Typography
-                variant="overline"
-                sx={{
-                  display: "block",
-                  mt: {
-                    xs: 3,
-                    sm: 3.5,
-                  },
-                  mb: 1,
-                  color: "primary.main",
-                  fontWeight: 700,
-                  fontSize: {
-                    xs: "0.75rem",
-                    sm: "0.8rem",
-                  },
-                  letterSpacing: "0.12em",
-                }}
-              >
-                TECHNOLOGIES
-              </Typography>
-
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  flexWrap: "wrap",
-                  gap: 0.75,
-                }}
-              >
-                {project.technologies.map((technology) => (
-                  <Chip
-                    key={technology}
-                    label={technology}
-                    size="small"
-                    variant="outlined"
-                    sx={{
-                      bgcolor: "background.paper",
-                      borderColor: "divider",
-                      color: "text.secondary",
-                      fontWeight: 500,
-                      fontSize: {
-                        xs: "0.75rem",
-                        sm: "0.8rem",
-                      },
-                    }}
-                  />
-                ))}
-              </Box>
-            </Box>
-
-            <Box sx={{ minWidth: 0 }}>
-              <Typography
-                variant="overline"
-                sx={{
-                  display: "block",
-                  mb: 0.75,
-                  color: "primary.main",
-                  fontWeight: 700,
-                  fontSize: {
-                    xs: "0.75rem",
-                    sm: "0.8rem",
-                  },
-                  letterSpacing: "0.12em",
-                }}
-              >
-                KEY HIGHLIGHTS
-              </Typography>
-
-              <Box
-                component="ul"
-                sx={{
-                  m: 0,
-                  pl: 2.25,
-                  display: "grid",
-                  gridTemplateColumns: {
-                    xs: "1fr",
-                    lg: "repeat(2, minmax(0, 1fr))",
-                  },
-                  columnGap: 4,
-                  rowGap: 0.5,
-                  color: "text.secondary",
-                  "& li::marker": {
-                    color: "primary.main",
-                  },
-                }}
-              >
-                {project.highlights.map((highlight) => (
-                  <Typography
-                    key={highlight}
-                    component="li"
-                    sx={{
-                      pl: 0.25,
-                      color: "text.secondary",
-                      fontSize: {
-                        xs: "0.9rem",
-                        sm: "0.95rem",
-                      },
-                      lineHeight: 1.6,
-                    }}
-                  >
-                    {highlight}
-                  </Typography>
-                ))}
-              </Box>
-            </Box>
-          </Box>
-
-          {(project.githubUrl || project.liveUrl) && (
-            <Box
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: {
+              xs: 0.75,
+              sm: 1,
+            },
+          }}
+        >
+          {project.technologies.map((technology) => (
+            <Chip
+              key={technology}
+              label={technology}
+              size={isMobile ? "small" : "medium"}
+              variant="outlined"
               sx={{
-                mt: {
-                  xs: 4,
-                  md: 5,
-                },
-                pt: 3,
-                display: "flex",
-                alignItems: "center",
-                flexWrap: "wrap",
-                gap: 1.5,
-                borderTop: "1px solid",
+                bgcolor: "background.paper",
                 borderColor: "divider",
+                color: "text.secondary",
+                fontWeight: 500,
+              }}
+            />
+          ))}
+        </Box>
+
+        <Typography
+          variant="overline"
+          sx={{
+            display: "block",
+            mt: {
+              xs: 2.5,
+              sm: 3.25,
+            },
+            mb: {
+              xs: 0.75,
+              sm: 1.25,
+            },
+            color: "primary.main",
+            fontWeight: 700,
+            letterSpacing: "0.12em",
+          }}
+        >
+          KEY HIGHLIGHTS
+        </Typography>
+
+        <Box
+          component="ul"
+          sx={{
+            m: 0,
+            pl: {
+              xs: 2.25,
+              sm: 2.5,
+            },
+            color: "text.secondary",
+          }}
+        >
+          {project.highlights.map((highlight) => (
+            <Typography
+              key={highlight}
+              component="li"
+              variant="body1"
+              sx={{
+                mb: {
+                  xs: 0.65,
+                  sm: 1,
+                },
+                pl: {
+                  xs: 0.25,
+                  sm: 0.5,
+                },
+                color: "text.secondary",
+                fontSize: {
+                  xs: "0.9rem",
+                  sm: "1rem",
+                },
+                lineHeight: {
+                  xs: 1.55,
+                  sm: 1.7,
+                },
               }}
             >
-              {project.githubUrl && (
-                <Button
-                  component="a"
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="outlined"
-                  startIcon={<GitHubIcon />}
-                  sx={{
-                    color: "text.primary",
-                    borderColor: "divider",
-                    "&:hover": {
-                      borderColor: "primary.main",
-                    },
-                  }}
-                >
-                  GitHub
-                </Button>
-              )}
+              {highlight}
+            </Typography>
+          ))}
+        </Box>
 
-              {project.liveUrl && (
-                <Button
-                  component="a"
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="contained"
-                  endIcon={<LaunchRoundedIcon />}
-                >
-                  Live Demo
-                </Button>
-              )}
-            </Box>
-          )}
-        </Container>
+        {(project.githubUrl || project.liveUrl) && (
+          <Box
+            sx={{
+              mt: {
+                xs: 3,
+                sm: 3.5,
+              },
+              pt: {
+                xs: 2.5,
+                sm: 3,
+              },
+              display: "flex",
+              alignItems: "center",
+              flexWrap: "wrap",
+              gap: 1.5,
+              borderTop: "1px solid",
+              borderColor: "divider",
+            }}
+          >
+            {project.githubUrl && (
+              <Button
+                component="a"
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="outlined"
+                startIcon={<GitHubIcon />}
+                sx={{
+                  color: "text.primary",
+                  borderColor: "divider",
+                  "&:hover": {
+                    borderColor: "primary.main",
+                  },
+                }}
+              >
+                GitHub
+              </Button>
+            )}
+
+            {project.liveUrl && (
+              <Button
+                component="a"
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="contained"
+                endIcon={<LaunchRoundedIcon />}
+              >
+                Live Demo
+              </Button>
+            )}
+          </Box>
+        )}
       </DialogContent>
     </Dialog>
   );

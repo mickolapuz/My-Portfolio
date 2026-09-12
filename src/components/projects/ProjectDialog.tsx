@@ -139,12 +139,18 @@ const ProjectDialog = ({ project, open, onClose }: ProjectDialogProps) => {
             sm: 3,
           },
           pt: {
-            xs: 3,
-            sm: 3.5,
+            xs: 3.5,
+            sm: 4,
           },
           pb: {
             xs: 2.5,
             sm: 3,
+          },
+          "&:first-of-type": {
+            pt: {
+              xs: 3.5,
+              sm: 4,
+            },
           },
         }}
       >

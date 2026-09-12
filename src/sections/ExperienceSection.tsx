@@ -9,7 +9,7 @@ const ExperienceSection = () => {
       component="section"
       id="experience"
       aria-labelledby="experience-title"
-      sx={{ py: { xs: 10, md: 14 }, bgcolor: "background.paper" }}
+      sx={{ py: { xs: 8, md: 9 }, bgcolor: "background.paper" }}
     >
       <Container maxWidth="lg">
         <Box sx={{ mb: { xs: 5, md: 7 }, maxWidth: 760 }}>

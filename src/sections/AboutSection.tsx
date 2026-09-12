@@ -20,7 +20,9 @@ const AboutSection = () => {
             xs: 5,
             md: 10,
           }}
-          alignItems="flex-start"
+          sx={{
+            alignItems: "flex-start",
+          }}
         >
           <Grid size={{ xs: 12, md: 4 }}>
             <Typography

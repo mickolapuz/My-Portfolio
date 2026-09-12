@@ -72,6 +72,34 @@ const projects: Project[] = [
     projectType: "public",
   },
   {
+    id: "financial-statement-conversion-platform",
+    title: "Financial Statement Conversion Platform",
+    shortDescription:
+      "A full-stack enterprise application for managing account reference data, conversion rules, reporting, and scheduled financial statement processing.",
+    description:
+      "An existing enterprise platform that I contributed to through ongoing maintenance and feature development. The application provides dashboards, reports, account-reference management, and configurable rule templates, while a scheduled background service processes financial statement files and converts MT940 data into CAMT.053 format using rule-based parsing, validation, and transformation logic.",
+    technologies: [
+      "Full-Stack Development",
+      "REST APIs",
+      "Database Operations",
+      "Background Services",
+      "Scheduled Processing",
+      "MT940",
+      "CAMT.053",
+    ],
+    highlights: [
+      "Contributed to the maintenance and continued development of an established full-stack enterprise application rather than a greenfield codebase.",
+      "Worked on application areas including dashboards, reporting, account-reference management, and configurable processing-rule templates.",
+      "Maintained and extended backend CRUD and database operations supporting operational workflows and reference data.",
+      "Enhanced a scheduled background processing service responsible for converting MT940 financial statements into CAMT.053 output.",
+      "Added stricter validation and processing checks to improve conversion reliability and reduce invalid output.",
+      "Worked with line- and tag-based parsing rules used to interpret, validate, and transform structured financial statement data.",
+      "Investigated existing processing behavior and implemented changes while preserving established production workflows.",
+    ],
+    isPrivate: true,
+    projectType: "work",
+  },
+  {
     id: "enterprise-data-validation-import",
     title: "Enterprise Data Validation & Import Automation",
     shortDescription:

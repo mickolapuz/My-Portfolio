@@ -1,7 +1,5 @@
 export interface ExperienceItem {
   title: string;
-  period: string;
-  current: boolean;
   description: string;
   highlights: string[];
   technologies: string[];
@@ -11,30 +9,26 @@ export const experienceCompany = "Citco";
 
 const experienceItems: ExperienceItem[] = [
   {
-    title: "Mid Developer",
-    period: "2025–Present",
-    current: true,
+    title: "Software Developer",
     description:
-      "Building contract management solutions and business workflow automation.",
+      "Experience across full-stack application development and enterprise business automation, contributing to business applications, APIs, data integrations, and automated workflows.",
     highlights: [
-      ".NET development and API integrations.",
-      "UiPath apps, automation processes, and data-loading workflows.",
-      "Application support, logging, and error handling.",
+      "Developed and maintained .NET applications and REST API integrations.",
+      "Built responsive frontend applications and internal business tools.",
+      "Worked with SQL databases and application data processing.",
+      "Developed UiPath Apps and automated business workflows.",
+      "Implemented application logging, validation, error handling, and production support.",
+      "Contributed to projects ranging from new application development to enterprise process automation.",
     ],
-    technologies: [".NET", "UiPath Apps", "UiPath Process"],
-  },
-  {
-    title: "Junior Developer",
-    period: "2023–2025",
-    current: false,
-    description:
-      "Contributed to four full-stack projects, including two built from the ground up.",
-    highlights: [
-      "Responsive frontends, backend APIs, and SQL database development.",
-      "Delivered simple to complex features across the application stack.",
-      "QA testing and manual IIS deployments.",
+    technologies: [
+      "React",
+      ".NET",
+      "C#",
+      "SQL",
+      "REST APIs",
+      "UiPath",
+      "UiPath Apps",
     ],
-    technologies: ["React", ".NET", "SQL", "IIS"],
   },
 ];
 

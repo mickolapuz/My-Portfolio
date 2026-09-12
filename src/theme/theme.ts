@@ -25,39 +25,37 @@ const theme = createTheme({
     fontFamily: '"Inter", sans-serif',
 
     h1: {
-      fontSize: "clamp(2.75rem, 6vw, 3.5rem)",
+      fontSize: "3.5rem",
       fontWeight: 700,
       lineHeight: 1.1,
+      "@media (max-width:600px)": {
+        fontSize: "2.75rem",
+      },
     },
 
     h2: {
-      fontSize: "clamp(2rem, 4.5vw, 2.5rem)",
+      fontSize: "2.5rem",
       fontWeight: 700,
       lineHeight: 1.2,
+      "@media (max-width:600px)": {
+        fontSize: "2rem",
+      },
     },
 
     h3: {
-      fontSize: "clamp(1.65rem, 4vw, 2rem)",
+      fontSize: "2rem",
       fontWeight: 600,
-      lineHeight: 1.25,
+      "@media (max-width:600px)": {
+        fontSize: "1.65rem",
+      },
     },
 
     h4: {
-      fontSize: "clamp(1.3rem, 3vw, 1.5rem)",
+      fontSize: "1.5rem",
       fontWeight: 600,
-      lineHeight: 1.3,
-    },
-
-    h5: {
-      fontSize: "clamp(1.2rem, 2.5vw, 1.4rem)",
-      fontWeight: 600,
-      lineHeight: 1.35,
-    },
-
-    h6: {
-      fontSize: "clamp(1.05rem, 2vw, 1.25rem)",
-      fontWeight: 600,
-      lineHeight: 1.4,
+      "@media (max-width:600px)": {
+        fontSize: "1.3rem",
+      },
     },
 
     body1: {

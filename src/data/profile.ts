@@ -7,7 +7,7 @@ const profile = {
   githubUrl: "https://github.com/mickolapuz",
   facebookUrl: "https://www.facebook.com/mickolapuz/",
   linkedinUrl: "https://www.linkedin.com/in/micko-lapuz-760620282/",
-  upworkUrl: "https://www.upwork.com/freelancers/~0154d70c87d40e04ef",
+  onlineJobsUrl: "https://www.onlinejobs.ph/jobseekers/info/1211566",
 
   resumeUrl: "/resume/Micko-Lapuz-Resume.pdf",
 };

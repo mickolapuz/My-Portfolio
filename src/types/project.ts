@@ -1,3 +1,5 @@
+export type ProjectType = "work" | "private" | "public";
+
 export interface Project {
   id: string;
   title: string;
@@ -8,4 +10,5 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
   isPrivate?: boolean;
+  projectType: ProjectType;
 }

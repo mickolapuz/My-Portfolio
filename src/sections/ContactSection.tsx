@@ -38,7 +38,7 @@ const ContactSection = () => {
     { label: "GitHub", href: profile.githubUrl, icon: GitHubIcon },
     { label: "LinkedIn", href: profile.linkedinUrl, icon: LinkedInIcon },
     { label: "Facebook", href: profile.facebookUrl, icon: FacebookIcon },
-    { label: "Upwork", href: profile.upworkUrl, icon: WorkOutlineRoundedIcon },
+    { label: "OnlineJobs", href: profile.onlineJobsUrl, icon: WorkOutlineRoundedIcon },
   ].filter((link) => link.href);
 
   return (

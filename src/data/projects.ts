@@ -29,6 +29,7 @@ const projects: Project[] = [
     ],
     githubUrl: "",
     isPrivate: true,
+    projectType: "private",
     liveUrl: "",
   },
   {
@@ -60,6 +61,7 @@ const projects: Project[] = [
     ],
     githubUrl: "https://github.com/mickolapuz/Gerbs-Electrical-Website",
     liveUrl: "https://www.gerbselectrical.com/",
+    projectType: "public",
   },
   {
     id: "enterprise-contract-automation",
@@ -88,6 +90,7 @@ const projects: Project[] = [
       "Prepared application components for containerized deployment.",
     ],
     isPrivate: true,
+    projectType: "work",
   },
 ];
 

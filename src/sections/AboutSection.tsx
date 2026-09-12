@@ -7,8 +7,8 @@ const AboutSection = () => {
       id="about"
       sx={{
         py: {
-          xs: 10,
-          md: 14,
+          xs: 8,
+          md: 9,
         },
         bgcolor: "background.paper",
       }}
